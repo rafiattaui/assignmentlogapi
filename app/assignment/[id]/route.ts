@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { APIError, handleError } from "@/lib/error";
 import { prisma } from "@/lib/prisma";
-import { success } from "zod";
 import { UpdateAssignmentSchema } from "@/lib/schemas";
 
+/**
+ * @description Fetches assignment details by ID
+ * @pathParams IDSchema
+ * @response 200: { success: boolean, assignment: PublicAssignmentSchema }
+ * @response 404: { error: string }
+ * @openapi
+ */
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -27,6 +33,13 @@ export async function GET(
   }
 }
 
+/**
+ * @description Deletes an assignment
+ * @pathParams IDSchema
+ * @response 200: { success: boolean }
+ * @response 404: { error: string }
+ * @openapi
+ */
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },
@@ -46,6 +59,14 @@ export async function DELETE(
   }
 }
 
+/**
+ * @description Updates an existing assignment
+ * @pathParams IDSchema
+ * @body UpdateAssignmentSchema
+ * @response 200: { success: boolean, assignment: PublicAssignmentSchema }
+ * @response 400: { error: string }
+ * @openapi
+ */
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> },

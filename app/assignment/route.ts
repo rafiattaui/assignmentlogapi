@@ -3,6 +3,13 @@ import { handleError } from "@/lib/error";
 import { CreateAssignmentSchema } from "@/lib/schemas";
 import { prisma } from "@/lib/prisma";
 
+/**
+ * @description Creates a new assignment
+ * @body CreateAssignmentSchema
+ * @response 201: CreateAssignmentResponseSchema
+ * @response 400: { error: string }
+ * @openapi
+ */
 export async function POST(request: NextRequest) {
   try {
     const rawData = await request.json();
@@ -21,6 +28,11 @@ export async function POST(request: NextRequest) {
   }
 }
 
+/**
+ * @description Retrieves a list of all assignments (Summary view)
+ * @response 200: AssignmentListResponseSchema
+ * @openapi
+ */
 export async function GET(request: NextRequest) {
   try {
     const assignmentList = await prisma.assignment.findMany({

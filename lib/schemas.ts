@@ -23,3 +23,22 @@ export const UpdateAssignmentSchema = AssignmentSchema.omit({
   createdAt: true,
   updatedAt: true,
 }).partial();
+
+export const IDSchema = z.object({
+  id: z.string().describe("Assignment ID")
+})
+
+export const CreateAssignmentResponseSchema = z.object({
+  success: z.boolean(),
+  assignment_id: z.number(),
+});
+
+export const AssignmentListResponseSchema = z.object({
+  success: z.boolean(),
+  assignments: z.array(
+    z.object({
+      name: z.string(),
+      isCompleted: z.boolean(),
+    })
+  ),
+});
