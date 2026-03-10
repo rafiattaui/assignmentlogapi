@@ -5,3 +5,6 @@
 | /assignment/{id} | GET    | Fetches full assignment details by its unique ID.   |
 | /assignment/{id} | PATCH  | Updates specific fields of an existing assignment.  |
 | /assignment/{id} | DELETE | Removes an assignment from the database.            |
+
+## Swagger
+Swagger API Documentation available at /api-docs/
