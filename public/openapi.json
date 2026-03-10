@@ -23,6 +23,9 @@
       "CreateAssignmentSchema": {
         "type": "object",
         "properties": {
+          "dueDate": {
+            "type": "string"
+          },
           "name": {
             "type": "string",
             "minLength": 5,
@@ -33,6 +36,7 @@
           }
         },
         "required": [
+          "dueDate",
           "name"
         ]
       },
@@ -67,6 +71,11 @@
                 },
                 "isCompleted": {
                   "type": "boolean"
+                },
+                "dueDate": {
+                  "type": "string",
+                  "format": "date-time",
+                  "nullable": true
                 }
               },
               "required": [
@@ -96,6 +105,9 @@
       "UpdateAssignmentSchema": {
         "type": "object",
         "properties": {
+          "dueDate": {
+            "type": "string"
+          },
           "name": {
             "type": "string",
             "minLength": 5,
@@ -123,6 +135,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "dueDate": {
+            "type": "string"
+          },
           "name": {
             "type": "string",
             "minLength": 5,
@@ -139,6 +154,7 @@
           "id",
           "createdAt",
           "updatedAt",
+          "dueDate",
           "name",
           "isCompleted"
         ]

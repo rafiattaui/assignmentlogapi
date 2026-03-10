@@ -16,7 +16,9 @@ export async function POST(request: NextRequest) {
     const data = CreateAssignmentSchema.parse(rawData);
 
     const result = await prisma.assignment.create({
-      data,
+      data: {
+        ...data,
+      },
     });
 
     return NextResponse.json({
@@ -38,7 +40,8 @@ export async function GET(request: NextRequest) {
     const assignmentList = await prisma.assignment.findMany({
       select: {
         name: true,
-        isCompleted: true,
+        status: true,
+        dueDate: true,  
       },
     });
 
